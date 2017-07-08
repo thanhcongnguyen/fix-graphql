@@ -8,9 +8,19 @@ class Menu extends  React.Component{
         super(props)
     }
     render(){
-        const {data} = this.props
-        console.log(data.Categories)
-        return( <h1> grapqhl with nodejs + reactjs </h1> )
+        const {data:{ loading, Categories }} = this.props
+        if(loading==false){
+          var categories = Categories.map(function(i){
+              return(
+                <li key={i.id}>{i.name}</li>
+              )
+          })
+        }
+        return(
+            <ul>
+                {categories}
+            </ul>
+        )
     }
 }
 Menu.propTypes = {
